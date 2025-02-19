@@ -1,0 +1,133 @@
+{
+  "AWS Certified Cloud Practitioner": {
+    "domains": [
+      {
+        "name": "Cloud Concepts",
+        "concentration_areas": [
+          "Cloud computing models",
+          "Scalability, elasticity, high availability",
+          "Cost management"
+        ]
+      },
+      {
+        "name": "Security & Compliance",
+        "concentration_areas": [
+          "AWS IAM (Identity & Access Management)",
+          "Shared responsibility model",
+          "Compliance programs"
+        ]
+      },
+      {
+        "name": "Technology & AWS Services",
+        "concentration_areas": [
+          "Core AWS services (EC2, S3, RDS, Lambda, VPC)",
+          "Serverless computing"
+        ]
+      },
+      {
+        "name": "Billing & Pricing",
+        "concentration_areas": [
+          "AWS pricing models",
+          "Cost optimization",
+          "Total Cost of Ownership (TCO)",
+          "AWS Free Tier"
+        ]
+      },
+      {
+        "name": "Cloud Architecture Design",
+        "concentration_areas": [
+          "Well-Architected Framework",
+          "Best practices",
+          "AWS global infrastructure"
+        ]
+      }
+    ]
+  },
+  "SAT Math": {
+    "domains": [
+      {
+        "name": "Algebra",
+        "concentration_areas": [
+          "Linear equations",
+          "Inequalities",
+          "Systems of equations",
+          "Quadratic equations"
+        ]
+      },
+      {
+        "name": "Problem Solving & Data Analysis",
+        "concentration_areas": [
+          "Ratios & percentages",
+          "Probability",
+          "Interpreting graphs & tables"
+        ]
+      },
+      {
+        "name": "Advanced Math",
+        "concentration_areas": [
+          "Functions",
+          "Exponents",
+          "Polynomials",
+          "Radicals",
+          "Logarithms"
+        ]
+      },
+      {
+        "name": "Geometry & Trigonometry",
+        "concentration_areas": [
+          "Circles",
+          "Angles & triangles",
+          "Sine, cosine",
+          "Coordinate geometry"
+        ]
+      },
+      {
+        "name": "Complex Numbers & Miscellaneous Topics",
+        "concentration_areas": [
+          "Imaginary numbers",
+          "Transformations",
+          "Vectors"
+        ]
+      }
+    ]
+  },
+  "SAT Reading": {
+    "domains": [
+      {
+        "name": "Command of Evidence",
+        "concentration_areas": [
+          "Identifying evidence for an argument",
+          "Supporting claims with textual evidence"
+        ]
+      },
+      {
+        "name": "Words in Context",
+        "concentration_areas": [
+          "Understanding vocabulary meaning based on passage",
+          "How word choice affects meaning and tone"
+        ]
+      },
+      {
+        "name": "Key Ideas & Details",
+        "concentration_areas": [
+          "Identifying main idea",
+          "Recognizing themes",
+          "Summarization"
+        ]
+      },
+      {
+        "name": "Structure & Purpose",
+        "concentration_areas": [
+          "Understanding text structure",
+          "Analyzing author’s purpose and tone"
+        ]
+      },
+      {
+        "name": "Data Interpretation",
+        "concentration_areas": [
+          "Analyzing charts, tables, and graphs in reading passages"
+        ]
+      }
+    ]
+  }
+}

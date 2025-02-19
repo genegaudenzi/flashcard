@@ -1,5 +1,7 @@
 {
   "projects": {
     "default": "flashcard-60334"
-  }
+  },
+  "targets": {},
+  "etags": {}
 }
