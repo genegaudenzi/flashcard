@@ -1,16 +1,22 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+import { 
+  getAuth, 
+  signInWithPopup, 
+  GoogleAuthProvider, 
+  createUserWithEmailAndPassword, 
+  signInWithEmailAndPassword, 
+  signOut, 
+  onAuthStateChanged 
+} from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyD6VdZaIiW4BWrT7ekA_qWiExusxkgCS2w",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: "flashcard-60334.firebaseapp.com",
   projectId: "flashcard-60334",
-  storageBucket: "flashcard-60334.firebasestorage.app",
+  storageBucket: "flashcard-60334.appspot.com",
   messagingSenderId: "409878544664",
   appId: "1:409878544664:web:cab1d309f82a4fc62ede6d",
   measurementId: "G-P4H2HED4LM"
@@ -18,22 +24,61 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-
-import { getFirestore, collection, getDocs } from "firebase/firestore";
-import app from "./firebaseConfig"; // Import initialized Firebase
-
+const auth = getAuth(app);
 const db = getFirestore(app);
+const googleProvider = new GoogleAuthProvider();
 
-async function testFirebase() {
+const googleSignIn = async () => {
   try {
-    const querySnapshot = await getDocs(collection(db, "flashcards"));
-    querySnapshot.forEach((doc) => {
-      console.log(doc.id, " => ", doc.data());
-    });
+    const result = await signInWithPopup(auth, googleProvider);
+    console.log("Google Sign-In Successful:", result.user);
+    return { success: true, user: result.user };
   } catch (error) {
-    console.error("Error fetching flashcards:", error);
+    console.error("Google Sign-In Error:", error.message);
+    return { success: false, error: error.message };
   }
-}
+};
 
-testFirebase();
+// 🔹 Updated Logout Function to Handle Google Users
+const logoutUser = async () => {
+  try {
+    const user = auth.currentUser;
+    if (user) {
+      console.log("Logging out user:", user.email);
+    }
+
+    await signOut(auth);
+    console.log("User logged out successfully.");
+  } catch (error) {
+    console.error("Logout Error:", error.message);
+  }
+};
+
+// Other authentication functions
+const registerUser = async (email, password) => {
+  try {
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    return { success: true, user: userCredential.user };
+  } catch (error) {
+    console.error("Registration Error:", error.message);
+    return { success: false, error: error.message };
+  }
+};
+
+const loginUser = async (email, password) => {
+  try {
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    return { success: true, user: userCredential.user };
+  } catch (error) {
+    return { success: false, error: error.message };
+  }
+};
+
+const authStateListener = (callback) => {
+  return onAuthStateChanged(auth, (user) => {
+    callback(user);
+  });
+};
+
+// Export Firebase instances and functions
+export { app, auth, db, googleSignIn, registerUser, loginUser, logoutUser, authStateListener };
